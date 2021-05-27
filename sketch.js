@@ -8,8 +8,8 @@ var engine,world;
 function setup() {
   createCanvas(800,700);
  
- //engine = Engine.create();
- //world = engine.world;
+ engine = Engine.create();
+ world = engine.world;
  
  //creating bdies
  paper = new Paper(100,600,10);
@@ -46,6 +46,6 @@ function draw() {
 
 function keyPressed(){
   if(keyCode === UP_ARROW){
-    Matter.BOdy.applyForce(paper.body,paper.body.position,{x:15,y: -15})
+    Matter.Body.applyForce(paper.body,paper.body.position,{x:15,y: -15})
   }
 }
