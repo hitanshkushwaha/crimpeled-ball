@@ -2,7 +2,7 @@ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
- 
+const Constraint = Matter.Constraint
 var engine,world;
 
 function setup() {
@@ -19,7 +19,7 @@ function setup() {
 leftSide = new Dustbin(550,620,20,100);
 bottom = new Dustbin(610,660,100,20);
 rightSide = new Dustbin(670,620,20,100);
-
+slingshot=new Slingshot(paper.body,{x:100,y:500})
      Engine.run(engine);
 
 
@@ -40,12 +40,14 @@ function draw() {
   bottom.display();
   rightSide.display();
   paper.display();
- 
+ slingshot.display();
+
 }
 
 
-function keyPressed(){
-  if(keyCode === UP_ARROW){
-    Matter.Body.applyForce(paper.body,paper.body.position,{x:120,y: -150})
-  }
+function mouseDragged(){
+  Matter.Body.setPosition(paper.body,{x:mouseX,y:mouseY})
+}
+function mouseReleased(){
+  slingshot.fly();
 }
